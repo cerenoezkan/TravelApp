@@ -54,6 +54,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_margin="16dp"
+                android:background="@drawable/gray_bg"
                 android:layout_height="match_parent">
 
                 <EditText
@@ -62,7 +63,8 @@
                     android:layout_height="41dp"
                     android:ems="10"
                     android:inputType="text"
-                    android:text="Name"
+                    android:hint="Address,City..."
+                    android:drawableStart="@drawable/search_icon"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
