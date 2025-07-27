@@ -1,7 +1,13 @@
 <resources>
-    <string name="app_name">Travelapp</string>
+    <string name="app_name">Travel App</string>
     <string name="background_image_desc">Splash screen background image</string>
     <string name="splash_title">Explore the World\nwith us</string>
     <string name="splash_subtitle">Your journey begins here</string>
     <string name="start">Start</string>
+
+    <!-- Home screen -->
+    <string name="location">Location</string>
+    <string name="address_hint">Address, City…</string>
+    <string name="search_button">Search</string>
+    <string name="bell_icon_desc">Notification bell icon</string>
 </resources>
