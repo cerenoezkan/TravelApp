@@ -10,4 +10,6 @@
     <string name="address_hint">Address, City…</string>
     <string name="search_button">Search</string>
     <string name="bell_icon_desc">Notification bell icon</string>
+    <string name="popular_destination">Popular Destination</string>
+    <string name="see_all">See all</string>
 </resources>
