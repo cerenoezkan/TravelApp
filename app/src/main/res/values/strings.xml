@@ -12,4 +12,5 @@
     <string name="bell_icon_desc">Notification bell icon</string>
     <string name="popular_destination">Popular Destination</string>
     <string name="see_all">See all</string>
+    <string name="recommended">Recommended</string>
 </resources>

@@ -37,7 +37,7 @@ android {
 }
 
 dependencies {
-    implementation(libs.appcompat)
+    implementation("com.ismaeldivita.chip-navigation-bar:chip-navigation-bar:1.3.4")
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)

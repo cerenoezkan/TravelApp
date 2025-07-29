@@ -14,7 +14,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="100dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -43,7 +44,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Spinner
-                    android:id="@+id/spinner"
+                    android:id="@+id/locationSp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -77,16 +78,16 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    style="@android:style/Widget.Button"
-                    android:background="@drawable/purple_bg"
-                    android:textColor="@color/white"
                     android:id="@+id/button3"
+                    style="@android:style/Widget.Button"
                     android:layout_width="85dp"
                     android:layout_height="45dp"
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="4dp"
                     android:layout_marginBottom="2dp"
+                    android:background="@drawable/purple_bg"
                     android:text="@string/search_button"
+                    android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -108,7 +109,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ProgressBar
-                    android:id="@+id/progressBar2"
+                    android:id="@+id/progressBarBanner"
                     style="?android:attr/progressBarStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -123,7 +124,7 @@
                 android:layout_height="match_parent">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
+                    android:id="@+id/recyclerViewCategory"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clipToPadding="false"
@@ -137,13 +138,13 @@
                     app:layout_constraintVertical_bias="0.0" />
 
                 <ProgressBar
-                    android:id="@+id/progressBar3"
+                    android:id="@+id/progressBarCategory"
                     style="?android:attr/progressBarStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/recyclerView"
+                    app:layout_constraintStart_toStartOf="@+id/recyclerViewCategory"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -160,16 +161,16 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/popular_destination"
+                    android:textColor="@color/dark_blue"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/dark_blue"/>
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/seeAllPopular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/see_all"
-                    android:textColor="@color/purple"/>
+                    android:textColor="@color/purple" />
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -177,7 +178,7 @@
                 android:layout_height="match_parent">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView2"
+                    android:id="@+id/recyclerViewRecommended"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clipToPadding="false"
@@ -189,7 +190,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ProgressBar
-                    android:id="@+id/progressBar6"
+                    android:id="@+id/progressBarRecommended"
                     style="?android:attr/progressBarStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -197,9 +198,93 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/recommended"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/seeAllRecommendedBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/see_all"
+                    android:textColor="@color/purple" />
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewRecommended"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ProgressBar
+                    android:id="@+id/progressBarRecommended"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
     </ScrollView>
+
+    <com.ismaeldivita.chipnavigation.ChipNavigationBar
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:elevation="3dp"
+        android:padding="4dp"
+        app:cnb_iconSize="20sp"
+        app:cnb_iconColor="@color/darkBlue"
+        app:cnb_radius="50dp"
+        app:cnb_orientationMode="horizontal"
+        app:cnb_unselectedColor="@color/darkBlue"
+        app:cnb_menuResource="@menu/menu_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingClass,MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
