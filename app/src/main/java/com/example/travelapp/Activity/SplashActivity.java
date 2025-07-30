@@ -1,14 +1,10 @@
-package com.example.travelapp;
+package com.example.travelapp.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.travelapp.databinding.ActivitySplashBinding;
 
@@ -22,6 +18,6 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.startBtn.setOnClickListener(v ->
-                startActivity(new Intent(SplashActivity.this,MainActivity.class)));
+                startActivity(new Intent(SplashActivity.this, MainActivity.class)));
     }
 }
