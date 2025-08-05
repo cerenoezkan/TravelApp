@@ -6,9 +6,6 @@ import android.widget.ArrayAdapter;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.travelapp.Domain.Location;
 import com.example.travelapp.R;
@@ -32,12 +29,13 @@ public class MainActivity extends AppCompatActivity {
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         database=FirebaseDatabase.getInstance();
+
         initLocations();
 
     }
 
     private void initLocations() {
-        DatabaseReference myref=database.getReference(path:"Location");
+        DatabaseReference myref=database.getReference("Location");
         ArrayList<Location> list=new ArrayList<>();
         myref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -47,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
                         list.add(issuee.getValue(Location.class));
                     }
 
-                    ArrayAdapter<Location> adapter=new ArrayAdapter<>(context:MainActivity.this,
-                            R.layout.sp_item,list);
+                    ArrayAdapter<Location> adapter=new ArrayAdapter<>(MainActivity.this,
+                        R.layout.sp_item,list);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     binding.locationSp.setAdapter(adapter);
                 }

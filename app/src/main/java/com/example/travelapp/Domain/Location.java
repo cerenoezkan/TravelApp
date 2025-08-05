@@ -1,5 +1,7 @@
 package com.example.travelapp.Domain;
 
+import androidx.annotation.NonNull;
+
 public class Location {
     private int ID;
     private String Loc;
@@ -7,6 +9,7 @@ public class Location {
     public Location() {
     }
 
+    @NonNull
     @Override
     public String toString() {
         return Loc ;

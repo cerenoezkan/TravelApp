@@ -13,4 +13,8 @@
     <string name="popular_destination">Popular Destination</string>
     <string name="see_all">See all</string>
     <string name="recommended">Recommended</string>
+    <string name="home">Home</string>
+    <string name="explorer">Explorer</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="profile">Profile</string>
 </resources>
