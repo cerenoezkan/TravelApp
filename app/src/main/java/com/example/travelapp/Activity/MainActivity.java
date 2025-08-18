@@ -9,11 +9,14 @@ import android.widget.ArrayAdapter;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 
+import com.example.travelapp.Adapter.CategoryAdapter;
 import com.example.travelapp.Adapter.SliderAdapter;
+import com.example.travelapp.Domain.Category;
 import com.example.travelapp.Domain.Location;
 import com.example.travelapp.Domain.SliderItems;
 import com.example.travelapp.R;
@@ -43,11 +46,41 @@ public class MainActivity extends AppCompatActivity {
         // Verileri başlat
         initLocations();
         initBanners();
+        initCategory();
     }
 
     /**
      * Firebase'den konum listesini alır ve Spinner'a ekler
      */
+    private void initCategory() {
+        DatabaseReference myRef = database.getReference("Category");
+        ArrayList<Category> list = new ArrayList<>();
+
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot issue : snapshot.getChildren()) {
+                        list.add(issue.getValue(Category.class));
+                    }
+
+                   if(!list.isEmpty()) {
+                       binding.recyclerViewCategory.setLayoutManager(
+                               new LinearLayoutManager(MainActivity.this,LinearLayoutManager.HORIZONTAL,false)
+                       );
+                       RecyclerView.Adapter adapter = new CategoryAdapter(list);
+                               binding.recyclerViewCategory.setAdapter(adapter);
+                   }
+                   binding.progressBarCategory.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Hata logu eklenebilir
+            }
+        });
+    }
     private void initLocations() {
         DatabaseReference myRef = database.getReference("Location");
         ArrayList<Location> list = new ArrayList<>();
