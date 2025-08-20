@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 
+import com.example.travelapp.Adapter.RecommendedAdapter;
+import com.example.travelapp.Domain.Item;
+import com.example.travelapp.Adapter.PopularAdapter;
+
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,11 +51,70 @@ public class MainActivity extends AppCompatActivity {
         initLocations();
         initBanners();
         initCategory();
+        initPopular();
     }
 
     /**
      * Firebase'den konum listesini alır ve Spinner'a ekler
      */
+    private void initRecommended() {
+        DatabaseReference myRef = database.getReference("Item");
+        ArrayList<Item> list = new ArrayList<>();
+
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot issue : snapshot.getChildren()) {
+                        list.add(issue.getValue(Item.class));
+                    }
+
+                    if(!list.isEmpty()) {
+                        binding.recyclerViewRecommended.setLayoutManager(
+                                new LinearLayoutManager(MainActivity.this,LinearLayoutManager.HORIZONTAL,false)
+                        );
+                        RecyclerView.Adapter<RecommendedAdapter.Viewholder> adapter = new RecommendedAdapter(list);
+                        binding.recyclerViewRecommended.setAdapter(adapter);
+                    }
+                    binding.progressBarRecommended.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Hata logu eklenebilir
+            }
+        });
+    }
+    private void initPopular() {
+        DatabaseReference myRef = database.getReference("Popular");
+        ArrayList<Item> list = new ArrayList<>();
+
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot issue : snapshot.getChildren()) {
+                        list.add(issue.getValue(Item.class));
+                    }
+
+                    if(!list.isEmpty()) {
+                        binding.recyclerViewPopular.setLayoutManager(
+                                new LinearLayoutManager(MainActivity.this,LinearLayoutManager.HORIZONTAL,false)
+                        );
+                        RecyclerView.Adapter<PopularAdapter.Viewholder> adapter = new PopularAdapter(list);
+                        binding.recyclerViewPopular.setAdapter(adapter);
+                    }
+                    binding.progressBarPopular.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Hata logu eklenebilir
+            }
+        });
+    }
     private void initCategory() {
         DatabaseReference myRef = database.getReference("Category");
         ArrayList<Category> list = new ArrayList<>();
@@ -68,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                        binding.recyclerViewCategory.setLayoutManager(
                                new LinearLayoutManager(MainActivity.this,LinearLayoutManager.HORIZONTAL,false)
                        );
-                       RecyclerView.Adapter adapter = new CategoryAdapter(list);
+                       RecyclerView.Adapter<CategoryAdapter.Viewholder> adapter = new CategoryAdapter(list);
                                binding.recyclerViewCategory.setAdapter(adapter);
                    }
                    binding.progressBarCategory.setVisibility(View.GONE);
