@@ -1,5 +1,6 @@
 package com.example.travelapp.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +34,7 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
         return new Viewholder(binding);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull RecommendedAdapter.Viewholder holder, int position) {
 
@@ -59,7 +61,7 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
         return items.size();
     }
 
-    public class Viewholder extends RecyclerView.ViewHolder {
+    public static class Viewholder extends RecyclerView.ViewHolder {
         public Viewholder(ViewholderRecommendedBinding binding) {
             super(binding.getRoot());
         }
