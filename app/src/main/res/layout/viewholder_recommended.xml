@@ -59,7 +59,8 @@
         android:text="/Person"
         android:textColor="@color/dark_blue"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="34dp" />
+        tools:layout_editor_absoluteX="34dp"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView3"

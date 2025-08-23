@@ -1,9 +1,12 @@
 package com.example.travelapp.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.travelapp.Activity.DetailActivity;
 import com.example.travelapp.Domain.Item;
 
 import androidx.annotation.NonNull;
@@ -14,10 +17,9 @@ import com.example.travelapp.databinding.ViewholderPopularBinding;
 
 import java.util.ArrayList;
 
-public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.Viewholder>{
+public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.Viewholder> {
     ArrayList<Item> items;
     Context context;
-    ViewholderPopularBinding binding;
 
     public PopularAdapter(ArrayList<Item> items) {
         this.items = items;
@@ -26,29 +28,32 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.Viewhold
     @NonNull
     @Override
     public PopularAdapter.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        binding=ViewholderPopularBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false
+        ViewholderPopularBinding binding = ViewholderPopularBinding.inflate(
+                LayoutInflater.from(parent.getContext()), parent, false
         );
-        context=parent.getContext();
+        context = parent.getContext();
         return new Viewholder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull PopularAdapter.Viewholder holder, int position) {
+        Item currentItem = items.get(position);
 
-        binding.titleTxt.setText(items.get(position).getTitle());
-        binding.priceTxt.setText("$" + items.get(position).getPrice());
-        binding.addressTxt.setText(items.get(position).getAdress());
-        binding.scoreTxt.setText("" + items.get(position).getScore());
-
+        holder.binding.titleTxt.setText(currentItem.getTitle());
+        holder.binding.priceTxt.setText("$" + currentItem.getPrice());
+        holder.binding.addressTxt.setText(currentItem.getAdress());
+        holder.binding.scoreTxt.setText("" + currentItem.getScore());
 
         Glide.with(context)
-                .load(items.get(position).getPic())
-                .into(binding.pic);
+                .load(currentItem.getPic())
+                .into(holder.binding.pic);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-
+        holder.itemView.setOnClickListener(view -> {
+            int adapterPosition = holder.getAdapterPosition(); // ✅ güvenli kullanım
+            if (adapterPosition != RecyclerView.NO_POSITION) {
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("object", items.get(adapterPosition));
+                context.startActivity(intent);
             }
         });
     }
@@ -59,8 +64,11 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.Viewhold
     }
 
     public class Viewholder extends RecyclerView.ViewHolder {
+        ViewholderPopularBinding binding;
+
         public Viewholder(ViewholderPopularBinding binding) {
             super(binding.getRoot());
+            this.binding = binding; // ✅ holder'ın kendi binding'i
         }
     }
 }
