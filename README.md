@@ -1,5 +1,8 @@
 # TravelApp
 
+
+![App Preview](https://github.com/cerenoezkan/TravelApp/blob/535f06222e27683fcf17265720162872dc23f46e/Travel%20App%20(1).jpg)
+
 A simple Android application built with Kotlin, designed to help users explore and manage travel-related information. This project uses Firebase for real-time database support and follows modern Android development practices including ViewBinding and Jetpack libraries.
 
 ## Features
