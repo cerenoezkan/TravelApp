@@ -1,5 +1,6 @@
 package com.example.travelapp.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import com.bumptech.glide.Glide;
@@ -44,11 +45,10 @@ public class DetailActivity extends AppCompatActivity {
                 .load(object.getPic())
                 .into(binding.pic);
 
-        binding.addToCartBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
+        binding.addToCartBtn.setOnClickListener(v -> {
+            Intent intent=new Intent(DetailActivity.this,TicketActivity.class);
+            intent.putExtra("object",object);
+            startActivity(intent);
         });
     }
 
