@@ -2,19 +2,14 @@ package com.example.travelapp.Activity;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.bumptech.glide.Glide;
 import com.example.travelapp.Domain.Item;
-import com.example.travelapp.R;
-import com.example.travelapp.databinding.ActivitySplashBinding;
 import com.example.travelapp.databinding.ActivityTicketBinding;
 
 public class TicketActivity extends AppCompatActivity {
@@ -67,6 +62,8 @@ public class TicketActivity extends AppCompatActivity {
     }
 
     private void getIntentExtra() {
-        object=(Item) getIntent().getSerializableExtra("object");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            object = getIntent().getParcelableExtra("object", Item.class);
+        }
     }
 }

@@ -25,4 +25,27 @@
     <string name="tip_duration">Tip Duration</string>
     <string name="total_guest">Total Guest</string>
     <string name="download_ticket">Download Ticket</string>
+
+    <string name="price_format">$%d</string>
+    <string name="bed_format">%d Bed</string>
+    <string name="rating_format">%.1f Rating</string>
+    <string name="score_format">%1$.1f Rating</string>
+    <string name="address">Address</string>
+    <string name="duration">Duration</string>
+    <string name="_0">$0</string>
+    <string name="person">/Person</string>
+    <string name="todo">TODO</string>
+    <string name="_5">5</string>
+    <string name="distance">Distance</string>
+    <string name="bed">Bed</string>
+    <string name="description">Description</string>
+    <string name="text">text</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="_000">$000</string>
+    <string name="min">- min</string>
+    <string name="ticket_detail">Ticket Detail</string>
+    <string name="order_id_987654">Order Id:987654</string>
+    <string name="tour_guid">Tour Guid</string>
+    <string name="name">Name</string>
+    <string name="dash">-</string>
 </resources>

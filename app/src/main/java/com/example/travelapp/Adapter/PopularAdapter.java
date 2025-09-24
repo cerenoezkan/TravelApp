@@ -3,7 +3,6 @@ package com.example.travelapp.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.travelapp.Activity.DetailActivity;
@@ -16,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.example.travelapp.databinding.ViewholderPopularBinding;
 
 import java.util.ArrayList;
+import com.example.travelapp.R;
 
 public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.Viewholder> {
     ArrayList<Item> items;
@@ -40,16 +40,16 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.Viewhold
         Item currentItem = items.get(position);
 
         holder.binding.titleTxt.setText(currentItem.getTitle());
-        holder.binding.priceTxt.setText("$" + currentItem.getPrice());
-        holder.binding.addressTxt.setText(currentItem.getAdress());
-        holder.binding.scoreTxt.setText("" + currentItem.getScore());
+        holder.binding.priceTxt.setText(context.getString(R.string.price_format, currentItem.getPrice()));
+        holder.binding.addressTxt.setText(currentItem.getAddress());
+        holder.binding.scoreTxt.setText(context.getString(R.string.score_format, currentItem.getScore()));
 
         Glide.with(context)
                 .load(currentItem.getPic())
                 .into(holder.binding.pic);
 
         holder.itemView.setOnClickListener(view -> {
-            int adapterPosition = holder.getAdapterPosition(); // ✅ güvenli kullanım
+            int adapterPosition = holder.getBindingAdapterPosition();
             if (adapterPosition != RecyclerView.NO_POSITION) {
                 Intent intent = new Intent(context, DetailActivity.class);
                 intent.putExtra("object", items.get(adapterPosition));
@@ -63,12 +63,12 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.Viewhold
         return items.size();
     }
 
-    public class Viewholder extends RecyclerView.ViewHolder {
+    public static class Viewholder extends RecyclerView.ViewHolder {
         ViewholderPopularBinding binding;
 
         public Viewholder(ViewholderPopularBinding binding) {
             super(binding.getRoot());
-            this.binding = binding; // ✅ holder'ın kendi binding'i
+            this.binding = binding;
         }
     }
 }

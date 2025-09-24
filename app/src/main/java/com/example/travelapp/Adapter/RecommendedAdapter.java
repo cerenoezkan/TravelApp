@@ -40,7 +40,7 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
         Item currentItem = items.get(position);
         holder.binding.titleTxt.setText(currentItem.getTitle());
         holder.binding.priceTxt.setText("$" + currentItem.getPrice());
-        holder.binding.addressTxt.setText(currentItem.getAdress());
+        holder.binding.addressTxt.setText(currentItem.getAddress());
         holder.binding.scoreTxt.setText("" + currentItem.getScore());
 
         Glide.with(context)
@@ -48,7 +48,7 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
                 .into(holder.binding.pic);
 
         holder.itemView.setOnClickListener(view -> {
-            int adapterPosition = holder.getAdapterPosition();
+            int adapterPosition = holder.getBindingAdapterPosition();
             if (adapterPosition != RecyclerView.NO_POSITION) {
                 Intent intent = new Intent(context, DetailActivity.class);
                 intent.putExtra("object", items.get(adapterPosition));

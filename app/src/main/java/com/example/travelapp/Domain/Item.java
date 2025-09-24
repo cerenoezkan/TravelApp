@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Item implements Serializable {
     private String title;
-    private String adress;
+    private String address;
     private String description;
     private String pic;
     private String duration;
@@ -29,12 +29,12 @@ public class Item implements Serializable {
         this.title = title;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getDescription() {

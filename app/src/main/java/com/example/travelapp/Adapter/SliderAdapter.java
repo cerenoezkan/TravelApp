@@ -18,22 +18,21 @@ import com.example.travelapp.R;
 import java.util.ArrayList;
 
 public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderViewholder> {
-    private ArrayList<SliderItems> sliderItems;
-    private ViewPager2 viewPager2;
+    private final ArrayList<SliderItems> sliderItems;
+    private final ViewPager2 viewPager2;
     private Context context;
-    private Runnable runnable=new Runnable() {
+    private final Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            sliderItems.addAll(sliderItems);
-            notifyDataSetChanged();
+            int currentSize = sliderItems.size();
+            ArrayList<SliderItems> newItems = new ArrayList<>(sliderItems); // veya yeni listeden ekle
+            sliderItems.addAll(newItems); // eklenen öğeler
+            notifyItemRangeInserted(currentSize, newItems.size());
         }
     };
 
     public SliderAdapter(ArrayList<SliderItems> sliderItems, ViewPager2 viewPager2) {
         this.sliderItems = sliderItems;
-    }
-
-    public SliderAdapter(ViewPager2 viewPager2) {
         this.viewPager2 = viewPager2;
     }
 
@@ -59,7 +58,7 @@ public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderView
     }
 
       public class SliderViewholder extends RecyclerView.ViewHolder {
-            private ImageView imageView;
+            private final ImageView imageView;
           public SliderViewholder(@NonNull View itemView) {
               super(itemView);
               imageView=itemView.findViewById(R.id.imageSlider);
