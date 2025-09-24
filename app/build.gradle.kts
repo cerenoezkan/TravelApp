@@ -37,6 +37,7 @@ android {
 }
 
 dependencies {
+    implementation("com.github.ismaeldivita:chip-navigation-bar:1.3.4")
     implementation(libs.chipNavigationBar)
     implementation(libs.material)
     implementation(libs.activity)
